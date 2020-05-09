@@ -15,6 +15,11 @@ export class RegisterComponent implements OnInit {
     this.user = new User(1, 'ROLE_USER','','','','');
   }
 
+  onSubmit() {
+    console.log('register.component loaded succesfully');
+    console.log(this.user);
+  }
+
   ngOnInit(): void {
   }
 
