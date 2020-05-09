@@ -16,10 +16,10 @@
 
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" [routerLink]="['login']">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" [routerLink]="['register']">Register</a>
         </li>
       </ul>
 
@@ -47,8 +47,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10">
-      <login></login>
-      <register></register>
+      <router-outlet></router-outlet>
+      <!-- <login></login>
+      <register></register> -->
     </div>
   </div>
 </div>
