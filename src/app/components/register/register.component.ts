@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   public title:string;
   public user:User;
+  public status: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -23,8 +24,23 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.user);
-    console.log(this._userService.test());
+    // console.log(this.user);
+    // console.log(this._userService.test());
+    this._userService.register(this.user).subscribe(
+      response => {
+        this.status = response.status;
+        if(this.status == 'success') {
+          this.user = new User(1, 'ROLE_USER','','','','');
+        } else {
+          this.status = 'error';
+        }
+        console.log(this.status);
+
+      },
+      error => {
+        this.status = 'error';
+      }
+    )
   }
 
   ngOnInit(): void {
