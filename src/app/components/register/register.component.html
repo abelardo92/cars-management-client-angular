@@ -1,7 +1,13 @@
 
 <h2>Register</h2>
-<p>register works!</p>
-<form #registerForm='ngForm' (ngSubmit)='onSubmit();' class="col-md-7">
+<div class="alert alert-success" *ngIf="status == 'success'">
+  Register has been completed succesfully, <a [routerLink]="['/login']">login here</a>
+</div>
+<div class="alert alert-danger" *ngIf="status == 'error'">
+  Prolem registering user
+</div>
+
+<form #registerForm='ngForm' (ngSubmit)='onSubmit(registerForm);' class="col-md-7">
   <p>
     <label for="name">Name</label>
     <input type="text" name="name" #name='ngModel' [(ngModel)]="user.name" class="form-control" required/>
