@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let user = this._userService.getIdentity();
+    this.logout();
   }
 
   onSubmit(form) {
@@ -60,5 +61,26 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+
+  logout() {
+    console.log("logout");
+    this._route.params.subscribe(params => {
+      let logout = +params['sure'];
+      if(logout == 1) {
+        localStorage.removeItem('identity');
+        localStorage.removeItem('token');
+        console.log("logout");
+
+        this.identity = null;
+        this.token = null;
+
+        // redirect
+        this._router.navigate(['home']);
+
+      }
+    })
+  }
+
+
 
 }
