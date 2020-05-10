@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   public title: string;
   public user:User;
   public status: string;
+  public token;
+  public identity;
 
   constructor(
     private _route: ActivatedRoute,
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("login loaded succesfully!!")
+    let user = this._userService.getIdentity();
   }
 
   onSubmit(form) {
@@ -32,11 +34,13 @@ export class LoginComponent implements OnInit {
     this._userService.signup(this.user).subscribe(
       response => {
         // token
-        console.log(response);
+        this.token = response;
+        localStorage.setItem('token', this.token);
 
         this._userService.signup(this.user, true).subscribe(
           response => {
-            console.log(response);
+            this.identity = response;
+            localStorage.setItem('identity', JSON.stringify(this.identity));
           },
           error => {
             console.log(<any>error);

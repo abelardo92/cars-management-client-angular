@@ -8,6 +8,8 @@ import { User } from '../models/user';
 export class UserService {
   public url: string;
   public headers: HttpHeaders;
+  public identity;
+  public token;
 
   constructor(
     public _http: HttpClient
@@ -32,8 +34,16 @@ export class UserService {
     return this._http.post(this.url+'login', params, { headers: this.headers });
   }
 
-  test() {
-    return "test";
+  getIdentity() {
+    let identity = JSON.parse(localStorage.getItem('identity'));
+    this.identity = identity != 'undefined' ? identity : null;
+    return this.identity;
+  }
+
+  getToken() {
+    let token = localStorage.getItem('token');
+    this.token = token != 'undefined' ? token : null;
+    return this.token;
   }
 
 }
