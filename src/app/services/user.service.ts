@@ -24,7 +24,7 @@ export class UserService {
     return this._http.post(this.url+'register', params, { headers: this.headers });
   }
 
-  signup(user, getToken = null): Observable<any> {
+  login(user, getToken = null): Observable<any> {
     if(getToken) {
       user.get_token = true;
     }

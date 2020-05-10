@@ -32,20 +32,30 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form) {
 
-    this._userService.signup(this.user).subscribe(
+    this._userService.login(this.user).subscribe(
       response => {
-        // token
-        this.token = response;
-        localStorage.setItem('token', this.token);
 
-        this._userService.signup(this.user, true).subscribe(
-          response => {
-            this.identity = response;
-            localStorage.setItem('identity', JSON.stringify(this.identity));
-          },
-          error => {
-            console.log(<any>error);
-          });
+        if(response.status != 'error') {
+          // token
+          this.status = 'success';
+          this.token = response;
+          localStorage.setItem('token', this.token);
+
+          this._userService.login(this.user, true).subscribe(
+            response => {
+              this.identity = response;
+              localStorage.setItem('identity', JSON.stringify(this.identity));
+
+              this._router.navigate(['home']);
+
+            },
+            error => {
+              console.log(<any>error);
+            });
+        } else {
+          this.status = 'error';
+        }
+
 
 
         // this.status = response.status;
