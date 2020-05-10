@@ -24,8 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form) {
-    // console.log(this.user);
-    // console.log(this._userService.test());
+
     this._userService.register(this.user).subscribe(
       response => {
         this.status = response.status;
@@ -35,8 +34,6 @@ export class RegisterComponent implements OnInit {
         } else {
           this.status = 'error';
         }
-        console.log(this.status);
-
       },
       error => {
         this.status = 'error';
