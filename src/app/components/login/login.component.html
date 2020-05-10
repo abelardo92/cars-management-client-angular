@@ -4,7 +4,7 @@
   Register has been completed succesfully, <a [routerLink]="['/login']">login here</a>
 </div>
 <div class="alert alert-danger" *ngIf="status == 'error'">
-  Prolem registering user
+  Wrong username or password
 </div>
 
 <form #loginForm='ngForm' (ngSubmit)='onSubmit(loginForm);' class="col-md-7">
