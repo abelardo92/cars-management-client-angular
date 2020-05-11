@@ -1,1 +1,32 @@
-<p>car-new works!</p>
+
+<h2>{{title}}</h2>
+<div class="alert alert-success" *ngIf="status == 'success'">
+  Register has been completed succesfully, <a [routerLink]="['/login']">login here</a>
+</div>
+<div class="alert alert-danger" *ngIf="status == 'error'">
+  Problem registering user
+</div>
+
+<!-- <form #newCarForm='ngForm' (ngSubmit)='onSubmit(newCarForm);' class="col-md-7">
+  <p>
+    <label for="name">Name</label>
+    <input type="text" name="name" #name='ngModel' [(ngModel)]="user.name" class="form-control" required/>
+    <span *ngIf='!name.valid && name.touched'>Name is required</span>
+  </p>
+  <p>
+    <label for="last_name">Last name</label>
+    <input type="text" name="last_name" #last_name='ngModel' [(ngModel)]="user.last_name" class="form-control" required/>
+    <span *ngIf='!last_name.valid && last_name.touched'>Last name is required</span>
+  </p>
+  <p>
+    <label for="email">Email</label>
+    <input type="email" name="email" #email='ngModel' [(ngModel)]="user.email" class="form-control" required/>
+    <span *ngIf='!email.valid && email.touched'>Email is required</span>
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input type="password" name="password" #password='ngModel' [(ngModel)]="user.password" class="form-control" required/>
+    <span *ngIf='!password.valid && password.touched'>Password is required</span>
+  </p>
+  <input type="submit" value="Register" class="btn btn-success"/>
+</form> -->
