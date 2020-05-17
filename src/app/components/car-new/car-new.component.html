@@ -1,32 +1,39 @@
 
-<h2>{{title}}</h2>
-<div class="alert alert-success" *ngIf="status == 'success'">
-  Register has been completed succesfully, <a [routerLink]="['/login']">login here</a>
+<h2>{{ title_form }}</h2>
+<!-- status: {{ status }} -->
+<!-- {{car.title}} -->
+<!-- {{ status | json }} -->
+<div class="alert alert-success" *ngIf="status_result == 'success'">
+  Car added succesfully
 </div>
-<div class="alert alert-danger" *ngIf="status == 'error'">
-  Problem registering user
+<div class="alert alert-danger" *ngIf="status_result == 'error'">
+  Error adding car
 </div>
 
-<!-- <form #newCarForm='ngForm' (ngSubmit)='onSubmit(newCarForm);' class="col-md-7">
+<form #newCarForm='ngForm' (ngSubmit)='onSubmit(newCarForm);' class="col-md-7">
   <p>
-    <label for="name">Name</label>
-    <input type="text" name="name" #name='ngModel' [(ngModel)]="user.name" class="form-control" required/>
-    <span *ngIf='!name.valid && name.touched'>Name is required</span>
+    <label for="title">Title</label>
+    <input type="text" name="title" #title='ngModel' [(ngModel)]="car.title" class="form-control" required/>
+    <span *ngIf='!title.valid && title.touched'>Title is required</span>
   </p>
   <p>
-    <label for="last_name">Last name</label>
-    <input type="text" name="last_name" #last_name='ngModel' [(ngModel)]="user.last_name" class="form-control" required/>
-    <span *ngIf='!last_name.valid && last_name.touched'>Last name is required</span>
+    <label for="description">description</label>
+    <textarea name="description" #description='ngModel' [(ngModel)]="car.description" class="form-control" required></textarea>
+    <span *ngIf='!description.valid && description.touched'>description is required</span>
   </p>
   <p>
-    <label for="email">Email</label>
-    <input type="email" name="email" #email='ngModel' [(ngModel)]="user.email" class="form-control" required/>
-    <span *ngIf='!email.valid && email.touched'>Email is required</span>
+    <label for="price">Price</label>
+    <input type="number" name="price" #price='ngModel' [(ngModel)]="car.price" class="form-control" required/>
+    <span *ngIf='!price.valid && price.touched'>Price is required</span>
   </p>
   <p>
-    <label for="password">Password</label>
-    <input type="password" name="password" #password='ngModel' [(ngModel)]="user.password" class="form-control" required/>
-    <span *ngIf='!password.valid && password.touched'>Password is required</span>
+    <label for="status">Status</label>
+    <select class="form-control" name="status" #status='ngModel' [(ngModel)]="car.status" required>
+      <option value="true" selected='selected'>Yes</option>
+      <option value="false">No</option>
+    </select>
+    <span *ngIf='!status.valid && status.touched'>Status is required</span>
   </p>
-  <input type="submit" value="Register" class="btn btn-success"/>
-</form> -->
+
+  <input type="submit" value="Save" class="btn btn-success" [disabled]="!newCarForm.form.valid"/>
+</form>
