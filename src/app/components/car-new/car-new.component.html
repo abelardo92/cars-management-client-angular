@@ -1,8 +1,5 @@
 
 <h2>{{ title_form }}</h2>
-<!-- status: {{ status }} -->
-<!-- {{car.title}} -->
-<!-- {{ status | json }} -->
 <div class="alert alert-success" *ngIf="status_result == 'success'">
   Car added succesfully
 </div>
@@ -10,7 +7,7 @@
   Error adding car
 </div>
 
-<form #newCarForm='ngForm' (ngSubmit)='onSubmit(newCarForm);' class="col-md-7">
+<form #newCarForm='ngForm' (ngSubmit)='onSubmit(newCarForm);' *ngIf="car" class="col-md-7">
   <p>
     <label for="title">Title</label>
     <input type="text" name="title" #title='ngModel' [(ngModel)]="car.title" class="form-control" required/>
@@ -28,9 +25,9 @@
   </p>
   <p>
     <label for="status">Status</label>
-    <select class="form-control" name="status" #status='ngModel' [(ngModel)]="car.status" required>
-      <option value="true" selected='selected'>Yes</option>
-      <option value="false">No</option>
+    <select class="form-control" name="status" #status='ngModel' [(ngModel)]="car.status">
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
     </select>
     <span *ngIf='!status.valid && status.touched'>Status is required</span>
   </p>

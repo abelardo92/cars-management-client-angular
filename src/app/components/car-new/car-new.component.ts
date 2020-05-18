@@ -35,7 +35,7 @@ export class CarNewComponent implements OnInit, DoCheck {
     if(this.identity == null) {
       this._router.navigate(['/login']);
     } else {
-      this.car = new Car(1, '', '', 1, '', null, null);
+      this.car = new Car(1, '', '', 1, 'true', null, null);
       this.status_result = '';
       this.error = '';
       console.log("status: " + this.status_result);
